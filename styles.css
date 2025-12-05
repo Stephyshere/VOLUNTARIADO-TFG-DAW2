@@ -1,0 +1,621 @@
+:root {
+    --color-principal: #85bbf6; /* Azul */
+    --color-secundario: #429455; /* Verde */
+    --color-fondo: #f8f9fa; /* Gris claro */
+    --color-texto: #333;
+}
+
+/* Base y Tipografía */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+a {
+    text-decoration: none;
+    color: var(--color-principal);
+}
+
+/* ========================================================================= */
+/* ESTILOS DE LA CABECERA (HEADER) CORREGIDOS PARA CENTRADO Y ADMIN LATERAL */
+/* ========================================================================= */
+
+.header {
+    /* Usamos flexbox para centrar la navegación y empujar los extremos */
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: white;
+    box-shadow: 0 4px 4px rgb(48, 156, 250);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Agrupamiento Izquierdo y Derecho */
+.header-left,
+.header-right {
+    display: flex;
+    /* Usamos flex-grow: 1 para que el NAV en el centro tenga espacio para centrarse */
+    flex-grow: 100; 
+    max-width: 500px; /* Limitar el espacio para que el menú pueda centrarse */
+}
+
+.header-left {
+    justify-content: flex-start;
+}
+
+.header-right {
+    justify-content: flex-end;
+}
+
+/* Menú de Navegación (Centrado) */
+.nav {
+    display: flex;
+    justify-content: center; /* Centrado dentro del espacio flexible */
+    flex-grow: 2; /* Dar más peso para asegurar el centrado */
+}
+
+/* Estilos específicos de los botones Admin/Crear */
+.admin-cta, .create-cta {
+    margin-left: 15px;
+    font-size: 0.85em; /* Ligeramente más pequeños */
+    padding: 6px 12px;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: var(--color-principal);
+    margin-right: 15px; /* Separación del logo con botones Admin/Crear */
+}
+
+/* Enlaces del Menú (Ajustar margen) */
+.nav a {
+    text-decoration: none;
+    color: var(--color-texto);
+    margin: 0 15px; /* Margen simétrico para el centrado */
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+/* BOTONES DE SESIÓN */
+#login-link, #logout-btn {
+    margin-left: 20px;
+}
+
+/* MEDIA QUERIES (Manejo de Móvil/Tablet) */
+@media (max-width: 992px) {
+    /* En pantallas pequeñas, volvemos a un layout vertical o de extremos */
+    .header {
+        justify-content: space-between;
+    }
+    
+    /* Ocultamos el menú principal y el botón de crear para movérlo al menú desplegable */
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 990;
+    }
+    .nav.active {
+        display: flex;
+    }
+    .nav a {
+        margin: 10px 5%;
+        text-align: left;
+    }
+    
+    /* Ajustamos el layout en móvil para que el logo y el toggle sean los protagonistas */
+    .header-left {
+         /* Permitir que el logo y los botones pequeños se muestren */
+        flex-grow: 0; 
+        max-width: none;
+    }
+    .header-right {
+        /* Ocultamos login/logout en el header y los mostramos en el menú */
+        flex-grow: 0;
+        max-width: none;
+    }
+    
+    #login-link, #logout-btn {
+         /* Ocultar en el header, ya están en el menú desplegable */
+         display: none !important;
+    }
+    
+    .nav-toggle {
+        display: flex; /* Mostrar botón hamburguesa */
+        margin-left: 15px;
+    }
+}
+
+/* Toggle del Menú (Móvil) */
+.nav-toggle {
+    display: none; /* Oculto por defecto en desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 20px;
+    width: 30px;
+}
+.nav-toggle .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-texto);
+    transition: all 0.3s linear;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 150px 5% 50px;
+    text-align: center;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Degradado suave */
+}
+.hero-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--color-principal);
+}
+.hero-section p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Módulo de Búsqueda */
+.search-module {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.filter-group {
+    flex-basis: 30%;
+    min-width: 150px;
+    text-align: left;
+}
+.filter-group label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.filter-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.search-button {
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    align-self: flex-end; /* Alineado con los selects */
+}
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Sección de Proyectos */
+.projects-section {
+    padding: 50px 5%;
+    text-align: center;
+}
+.projects-section h2 {
+    font-size: 2em;
+    color: var(--color-secundario);
+    margin-bottom: 40px;
+}
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.project-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.3s;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+.project-card h3 {
+    color: var(--color-principal);
+    margin-top: 0;
+}
+.project-card .location, .project-card .activity {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+.project-card .location {
+    color: var(--color-secundario);
+    font-weight: bold;
+}
+.details-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: 1px solid var(--color-principal);
+    border-radius: 5px;
+    color: var(--color-principal);
+    transition: background-color 0.3s;
+}
+.details-button:hover {
+    background-color: var(--color-principal);
+    color: white;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 20px 5%;
+    text-align: center;
+    font-size: 0.9em;
+}
+.footer-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: underline;
+}
+
+/* ========================================================================= */
+/* EXTENSIONES CSS PARA PAGINAS ADICIONALES (sobre-nosotros, contacto, unete) */
+/* ========================================================================= */
+
+.page-content {
+    padding-top: 90px; /* Margen superior para compensar el header fijo */
+    padding-bottom: 50px;
+}
+
+.content-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 5%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content-section h2 {
+    color: var(--color-principal);
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.content-section h3 {
+    color: var(--color-secundario);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Estilos de la sección Sobre Nosotros */
+.impact-stats {
+    background-color: var(--color-fondo);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--color-principal);
+}
+
+/* Estilos de Formularios (Unirse, Contacto, Crear) */
+.volunteer-form, .contact-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--color-principal);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.submit-button {
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.submit-button:hover {
+    background-color: #1e7e34;
+}
+
+/* ========================================================================= */
+/* EXTENSIONES CSS PARA DETALLE DE PROYECTO */
+/* ========================================================================= */
+
+.project-detail {
+    padding-top: 50px;
+}
+
+.project-title {
+    color: var(--color-principal);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.project-subtitle {
+    color: #6c757d;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo del Botón CTA de la página de detalle */
+.cta-detail-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.cta-detail-button {
+    display: inline-block;
+    background-color: var(--color-secundario);
+    color: white;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-detail-button:hover {
+    background-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+/* Diseño de los Bloques de Información (Grid o Flex) */
+.detail-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas en escritorio */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.block-item {
+    background-color: var(--color-fondo);
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-principal);
+}
+
+.block-item h3 {
+    color: var(--color-principal);
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.block-item h4 {
+    color: #343a40;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.block-item ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.note-important {
+    background-color: #fff3cd; /* Amarillo suave */
+    color: #856404;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 5px solid #ffc107;
+    margin-top: 15px;
+}
+
+.bottom-cta {
+    margin-top: 60px;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+    }
+    .nav.active {
+        display: flex;
+    }
+    .nav a, .cta-header {
+        margin: 10px 5%;
+        text-align: center;
+    }
+    .cta-header {
+        width: 90%;
+    }
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .search-module {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-group {
+        flex-basis: 100%;
+        min-width: 100%;
+    }
+    .search-button {
+        align-self: center;
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-blocks {
+        grid-template-columns: 1fr;
+    }
+}/* ========================================================================= */
+/* ESTILOS DE TESTIMONIOS (MÁS BONITOS Y CON ANIMACIÓN) */
+/* ========================================================================= */
+
+.testimonials-section {
+    background-color: var(--color-principal); /* Azul oscuro */
+    color: white;
+    padding: 60px 5%;
+    text-align: center;
+    /* Aplicar un fondo sutilmente diferente para romper la monotonía */
+    background: linear-gradient(135deg, #0056b3, var(--color-principal));
+}
+.testimonials-section h2 {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    position: relative;
+}
+.testimonials-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-secundario); /* Línea verde debajo del título */
+    margin: 10px auto 0;
+}
+
+.testimonial-carousel {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Diseño de la Tarjeta */
+.testimonial-card {
+    background-color: white;
+    color: var(--color-texto);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 450px;
+    text-align: left;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-top: 5px solid var(--color-secundario); /* Borde superior verde */
+    
+    /* Propiedades para la Animación */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+/* Animación al pasar el cursor */
+.testimonial-card:hover {
+    /* Efecto de levantamiento y ligera rotación */
+    transform: translateY(-8px) rotateZ(-1deg); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #444;
+}
+.testimonial-author {
+    font-weight: bold;
+    color: var(--color-principal); /* Nombre en azul */
+    text-align: right;
+    display: block;
+    margin-top: 10px;
+    font-size: 1em;
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        max-width: 100%;
+    }
+}

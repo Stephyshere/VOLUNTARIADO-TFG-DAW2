@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Actividad - Voluntariado Mazarrón</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="logo">VoluntaMazarrón</div>
+        <nav id="nav-menu" class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#projects-section">Proyectos</a>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="crear-actividad.html" class="cta-header small-cta">➕ Crear</a>
+        </nav>
+        <a href="unete.html" class="cta-header">¡Únete Ahora!</a>
+        <button id="nav-toggle" class="nav-toggle">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </header>
+
+    <main class="page-content">
+        <section class="content-section form-section">
+            <h2>Crear Nueva Actividad de Voluntariado</h2>
+            <p>Introduce todos los detalles del nuevo proyecto.</p>
+            
+            <form id="create-project-form" class="volunteer-form">
+                
+                <h3>Información Básica</h3>
+                <div class="form-group">
+                    <label for="new-title">Título del Proyecto:</label>
+                    <input type="text" id="new-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="new-pedania">Pedanía de la Actividad:</label>
+                    <select id="new-pedania" required>
+                        <option value="">-- Selecciona Pedanía --</option>
+                        <option value="atalaya">Atalaya</option>
+                        <option value="balsicas">Balsicas</option>
+                        <option value="canadas">Cañadas del Romero</option>
+                        <option value="ganuelas">Gañuelas</option>
+                        <option value="garrobo">Garrobo</option>
+                        <option value="ifre-gallego">Ifre-Cañada de Gallego</option>
+                        <option value="ifre-pastrana">Ifre-Pastrana</option>
+                        <option value="leiva">Leiva</option>
+                        <option value="majada">Majada</option>
+                        <option value="moreras">Moreras</option>
+                        <option value="puerto">Puerto de Mazarrón</option>
+                        <option value="saladillo">Saladillo</option>
+                        <option value="mazarron">Mazarrón (Núcleo Urbano)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="new-activity">Área de Actividad:</label>
+                    <select id="new-activity" required>
+                        <option value="">-- Selecciona Área --</option>
+                        <option value="Medio Ambiente y Sostenibilidad">Medio Ambiente y Sostenibilidad</option>
+                        <option value="Social y Bienestar">Social y Bienestar</option>
+                        <option value="Educación y Cultura">Educación y Cultura</option>
+                        <option value="Sanidad y Salud">Sanidad y Salud</option>
+                        <option value="Deporte y Ocio">Deporte y Ocio</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="new-description">Descripción (Qué se va a hacer):</label>
+                    <textarea id="new-description" rows="4" required></textarea>
+                </div>
+
+                <h3>Logística y Horarios</h3>
+                <div class="form-group">
+                    <label for="new-duration">Duración por sesión (Ej: 3 horas):</label>
+                    <input type="text" id="new-duration">
+                </div>
+                <div class="form-group">
+                    <label for="new-frequency">Frecuencia (Ej: Cada miércoles / Un sábado al mes):</label>
+                    <input type="text" id="new-frequency">
+                </div>
+                <div class="form-group">
+                    <label for="new-meeting">Punto de Encuentro:</label>
+                    <input type="text" id="new-meeting">
+                </div>
+                <div class="form-group">
+                    <label for="new-transport">Información de Transporte (Ej: No / Coche compartido):</label>
+                    <input type="text" id="new-transport">
+                </div>
+
+                <h3>Materiales (Separa los ítems con un salto de línea)</h3>
+                <div class="form-group">
+                    <label for="new-vol-material">Material que aporta el voluntario:</label>
+                    <textarea id="new-vol-material" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="new-org-material">Material que aporta la organización:</label>
+                    <textarea id="new-org-material" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="new-notes">Notas importantes y Requisitos:</label>
+                    <textarea id="new-notes" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Crear y Publicar Actividad</button>
+            </form>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Aviso Legal</a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

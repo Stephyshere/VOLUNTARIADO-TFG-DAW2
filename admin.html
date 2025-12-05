@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Mazarrón</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-edit-btn { background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; margin-right: 5px; cursor: pointer; }
+        .admin-delete-btn { background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+        .admin-table-container { overflow-x: auto; margin-top: 20px; }
+        .admin-table { width: 100%; border-collapse: collapse; }
+        .admin-table th, .admin-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        .admin-table th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <header id="header" class="header">
+        </header>
+
+    <main id="admin-page" class="page-content">
+        <section class="content-section">
+            <h2>Gestión de Proyectos de Voluntariado</h2>
+            <p>Acceso de administrador. Puedes modificar o eliminar cualquier actividad.</p>
+            
+            <a href="crear-actividad.html" class="cta-header" style="display:block; width:250px; text-align:center; margin: 20px auto;">+ Crear Nuevo Proyecto</a>
+            
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Pedanía</th>
+                            <th>Área</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body">
+                        </tbody>
+                </table>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer class="footer">
+        </footer>
+    <script src="script.js"></script>
+</body>
+</html>

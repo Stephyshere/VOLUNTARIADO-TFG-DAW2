@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Voluntariado Mazarrón</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="logo">VoluntaMazarrón</div>
+        <nav id="nav-menu" class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#projects-section">Proyectos</a>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <a href="unete.html" class="cta-header">¡Únete Ahora!</a>
+        <button id="nav-toggle" class="nav-toggle">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </header>
+
+    <main class="page-content">
+        <section class="content-section contact-section">
+            <h2>Contáctanos</h2>
+            <p>Si tienes dudas sobre el proceso de voluntariado, tienes una propuesta de proyecto o simplemente quieres saludar, estamos aquí para ayudarte.</p>
+            
+            <div class="contact-details">
+                <h3>Información de Contacto</h3>
+                <p><strong>Email:</strong> contacto@voluntariadomazarron.org</p>
+                <p><strong>Teléfono:</strong> +34 968 XXX XXX</p>
+                <p><strong>Dirección:</strong> Centro Municipal de Servicios, Mazarrón (30870)</p>
+            </div>
+            
+            <form action="#" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="c_nombre">Nombre:</label>
+                    <input type="text" id="c_nombre" name="nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="c_email">Email:</label>
+                    <input type="email" id="c_email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="c_mensaje">Mensaje:</label>
+                    <textarea id="c_mensaje" name="mensaje" rows="6" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Enviar Mensaje</button>
+            </form>
+            
+            <div class="map-placeholder">
+                <h3>Ubicación</h3>
+                <div style="height: 300px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                    [Espacio para Mapa de Mazarrón]
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Aviso Legal</a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
