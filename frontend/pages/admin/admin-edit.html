@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Proyecto - Mazarrón</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="logo">VoluntaMazarrón</div>
+        <nav id="nav-menu" class="nav">
+            <a href="../public/index.html">Inicio</a>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="content-section form-section">
+            <h2>Editar Proyecto: <span id="edit-project-title-display">Cargando...</span></h2>
+            <p>Modifica los detalles, logística o el estado de la actividad.</p>
+
+            <form id="edit-project-form" class="volunteer-form">
+
+                <input type="hidden" id="edit-project-id" name="projectId">
+
+                <h3>Datos Principales</h3>
+                <div class="form-group">
+                    <label for="edit-title">Título del Proyecto:</label>
+                    <input type="text" id="edit-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-pedania">Pedanía:</label>
+                    <select id="edit-pedania" required>
+                        <option value="atalaya">Atalaya</option>
+                        <option value="balsicas">Balsicas</option>
+                        <option value="canadas">Cañadas del Romero</option>
+                        <option value="ganuelas">Gañuelas</option>
+                        <option value="garrobo">Garrobo</option>
+                        <option value="ifre-gallego">Ifre-Cañada de Gallego</option>
+                        <option value="ifre-pastrana">Ifre-Pastrana</option>
+                        <option value="leiva">Leiva</option>
+                        <option value="majada">Majada</option>
+                        <option value="moreras">Moreras</option>
+                        <option value="puerto">Puerto de Mazarrón</option>
+                        <option value="saladillo">Saladillo</option>
+                        <option value="mazarron">Mazarrón (Núcleo Urbano)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-activity">Área de Actividad:</label>
+                    <select id="edit-activity" required>
+                        <option value="Medio Ambiente y Sostenibilidad">Medio Ambiente y Sostenibilidad</option>
+                        <option value="Social y Bienestar">Social y Bienestar</option>
+                        <option value="Educación y Cultura">Educación y Cultura</option>
+                        <option value="Sanidad y Salud">Sanidad y Salud</option>
+                        <option value="Deporte y Ocio">Deporte y Ocio</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-description">Descripción:</label>
+                    <textarea id="edit-description" rows="4" required></textarea>
+                </div>
+
+                <h3>Logística</h3>
+                <div class="form-group">
+                    <label for="edit-duration">Duración:</label>
+                    <input type="text" id="edit-duration">
+                </div>
+                <div class="form-group">
+                    <label for="edit-frequency">Frecuencia:</label>
+                    <input type="text" id="edit-frequency">
+                </div>
+                <div class="form-group">
+                    <label for="edit-meeting">Punto de Encuentro:</label>
+                    <input type="text" id="edit-meeting">
+                </div>
+                <div class="form-group">
+                    <label for="edit-transport">Transporte:</label>
+                    <input type="text" id="edit-transport">
+                </div>
+
+                <h3>Materiales & Notas</h3>
+                <div class="form-group">
+                    <label for="edit-vol-material">Material Voluntario (Separar por nueva línea):</label>
+                    <textarea id="edit-vol-material" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit-org-material">Material Organización (Separar por nueva línea):</label>
+                    <textarea id="edit-org-material" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit-notes">Notas Importantes:</label>
+                    <textarea id="edit-notes" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Actualizar Proyecto</button>
+                <a href="admin.html" class="submit-button"
+                    style="background-color:gray; display:block; text-align:center;">Cancelar</a>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+    </footer>
+    <script src="../../assets/js/script.js"></script>
+</body>
+
+</html>

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Actividad - Voluntariado Mazarrón</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
+
 <body>
     <header id="header" class="header">
         <div class="logo">VoluntaMazarrón</div>
         <nav id="nav-menu" class="nav">
-            <a href="index.html">Inicio</a>
-            <a href="index.html#projects-section">Proyectos</a>
-            <a href="sobre-nosotros.html">Sobre Nosotros</a>
-            <a href="contacto.html">Contacto</a>
+            <a href="../public/index.html">Inicio</a>
+            <a href="../public/index.html#projects-section">Proyectos</a>
+            <a href="../public/sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="../public/contacto.html">Contacto</a>
             <a href="crear-actividad.html" class="cta-header small-cta">➕ Crear</a>
         </nav>
-        <a href="unete.html" class="cta-header">¡Únete Ahora!</a>
+        <a href="../public/unete.html" class="cta-header">¡Únete Ahora!</a>
         <button id="nav-toggle" class="nav-toggle">
             <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
@@ -26,15 +28,15 @@
         <section class="content-section form-section">
             <h2>Crear Nueva Actividad de Voluntariado</h2>
             <p>Introduce todos los detalles del nuevo proyecto.</p>
-            
+
             <form id="create-project-form" class="volunteer-form">
-                
+
                 <h3>Información Básica</h3>
                 <div class="form-group">
                     <label for="new-title">Título del Proyecto:</label>
                     <input type="text" id="new-title" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="new-pedania">Pedanía de la Actividad:</label>
                     <select id="new-pedania" required>
@@ -99,7 +101,7 @@
                     <label for="new-org-material">Material que aporta la organización:</label>
                     <textarea id="new-org-material" rows="3"></textarea>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="new-notes">Notas importantes y Requisitos:</label>
                     <textarea id="new-notes" rows="3"></textarea>
@@ -118,6 +120,7 @@
             <a href="#">Aviso Legal</a>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="../../assets/js/script.js"></script>
 </body>
+
 </html>
