@@ -4,90 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración para gestionar proyectos de voluntariado.">
     <title>Panel de Administración - Mazarrón</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../assets/css/styles.css">
-    <style>
-        .admin-edit-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            margin-right: 5px;
-            cursor: pointer;
-        }
-
-        .admin-delete-btn {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .admin-table-container {
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .admin-table th,
-        .admin-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .admin-table th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="../../assets/js/script.js" defer></script>
 </head>
 
-<body>
-    <header id="header" class="header">
-        <div class="logo">VoluntaMazarrón</div>
-        <nav id="nav-menu" class="nav">
-            <a href="../public/index.html">Inicio</a>
-        </nav>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid px-5">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <a class="navbar-brand logo" href="../public/index.html">VoluntaMazarrón</a>
+                <div class="ms-auto d-flex align-items-center gap-3">
+                    <span class="badge bg-primary rounded-pill">Admin</span>
+                    <a href="../public/index.html" class="nav-link fw-bold">Inicio</a>
+                    <button id="logout-btn" class="btn btn-outline-danger btn-sm rounded-pill">Cerrar Sesión</button>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main id="admin-page" class="page-content">
-        <section class="content-section">
-            <h2>Gestión de Proyectos de Voluntariado</h2>
-            <p>Acceso de administrador. Puedes modificar o eliminar cualquier actividad.</p>
-
-            <a href="crear-actividad.html" class="cta-header"
-                style="display:block; width:250px; text-align:center; margin: 20px auto;">+ Crear Nuevo Proyecto</a>
-
-            <div class="admin-table-container">
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>Título</th>
-                            <th>Pedanía</th>
-                            <th>Área</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="admin-table-body">
-                    </tbody>
-                </table>
+    <main id="admin-page" class="page-content flex-grow-1 py-5 mt-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h2 class="display-6 fw-bold mb-1">Gestión de Proyectos</h2>
+                    <p class="text-muted mb-0">Administra las actividades de voluntariado.</p>
+                </div>
+                <a href="crear-actividad.html" class="btn btn-success rounded-pill px-4 fw-bold shadow-sm">
+                    <i class="bi bi-plus-lg me-2"></i>Crear Nuevo Proyecto
+                </a>
             </div>
 
-        </section>
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 admin-table">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="py-3 ps-4">Título</th>
+                                <th class="py-3">Pedanía</th>
+                                <th class="py-3">Área</th>
+                                <th class="py-3 text-end pe-4">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body">
+                            <!-- Rows will be populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
+    <footer class="footer bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 text-secondary small">&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
+        </div>
     </footer>
-    <script src="../../assets/js/script.js"></script>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS for Admin Table (Inline for now, should be in script.js but adapting here for immediate effect) -->
+    <script>
+        // Override renderProjects for Admin Table if needed, or rely on script.js logic if it targets #admin-table-body
+        // The existing script.js logic for admin table needs to be checked.
+        // Looking at script.js, there isn't explicit logic to populate #admin-table-body in the viewed snippet.
+        // It seems the user might have expected this to work or it's missing. 
+        // I will add a small script here to fetch and populate the table for the Admin view, 
+        // assuming the API endpoint is the same.
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const tableBody = document.getElementById('admin-table-body');
+            if (tableBody) {
+                try {
+                    const response = await fetch('../../backend/api/activities.php'); // Adjust path if needed
+                    const projects = await response.json();
+
+                    tableBody.innerHTML = '';
+                    projects.forEach(project => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td class="ps-4 fw-bold text-primary">${project.titulo}</td>
+                            <td><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill">${project.pedania_nombre}</span></td>
+                            <td>${project.actividad}</td>
+                            <td class="text-end pe-4">
+                                <a href="admin-edit.html?id=${project.id}" class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-pencil"></i></a>
+                                <button onclick="deleteProject(${project.id})" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } catch (e) {
+                    console.error("Error loading admin projects", e);
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>

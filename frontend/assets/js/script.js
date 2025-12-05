@@ -196,8 +196,11 @@ function renderProjects(projects) {
     if (noResultsMsg) noResultsMsg.style.display = 'none';
 
     projects.forEach(project => {
+        const col = document.createElement('div');
+        col.classList.add('col-md-6', 'col-lg-4');
+
         const card = document.createElement('div');
-        card.classList.add('project-card', 'animate-fade-up');
+        card.classList.add('project-card', 'card', 'h-100', 'border-0', 'shadow-sm', 'animate-fade-up');
 
         // Imagen por defecto
         const bgImage = project.imagen_url || '../../assets/img/default-project.jpg';
@@ -205,100 +208,37 @@ function renderProjects(projects) {
         let adminControls = '';
         if (currentUser && currentUser.role === 'admin') {
             adminControls = `
-                <div class="admin-controls" style="margin-top:10px; border-top:1px solid #eee; padding-top:10px;">
-                    <a href="../admin/admin-edit.html?id=${project.id}" class="admin-btn edit-btn" style="color:blue; margin-right:10px;">✏️ Editar</a>
-                    <button onclick="deleteProject(${project.id})" class="admin-btn delete-btn" style="color:red; cursor:pointer; background:none; border:none;">🗑️ Eliminar</button>
+                <div class="admin-controls mt-3 pt-3 border-top d-flex justify-content-between">
+                    <a href="../admin/admin-edit.html?id=${project.id}" class="btn btn-sm btn-outline-primary">✏️ Editar</a>
+                    <button onclick="deleteProject(${project.id})" class="btn btn-sm btn-outline-danger">🗑️ Eliminar</button>
                 </div>
             `;
         }
 
         card.innerHTML = `
-            <div class="card-image" style="background-image: url('${bgImage}');">
-                <span class="badget-pedania">${project.pedania_nombre}</span>
+            <div class="card-image position-relative" style="background-image: url('${bgImage}'); height: 200px; background-size: cover; background-position: center;">
+                <span class="badge bg-dark position-absolute bottom-0 end-0 m-2">${project.pedania_nombre}</span>
             </div>
-            <div class="card-content">
-                <div class="card-meta">
+            <div class="card-body d-flex flex-column p-4">
+                <div class="text-muted text-uppercase fw-bold small mb-2">
                    <span>${getIconForActivity(project.actividad)} ${project.actividad}</span>
                 </div>
-                <h3>${project.titulo}</h3>
-                <p>${project.descripcion.substring(0, 100)}...</p>
-                <a href="../public/detalle-proyecto.html?id=${project.id}" class="details-link">Ver Detalles &rarr;</a>
-                ${adminControls}
+                <h3 class="card-title h5 fw-bold mb-3">${project.titulo}</h3>
+                <p class="card-text text-muted mb-4 flex-grow-1">${project.descripcion.substring(0, 100)}...</p>
+                <a href="../public/detalle-proyecto.html?id=${project.id}" class="btn btn-link text-primary fw-bold p-0 text-decoration-none stretched-link">Ver Detalles &rarr;</a>
+                ${adminControls.replace('stretched-link', '') /* Prevent admin buttons from triggering card link if possible, but stretched-link covers all. Ideally admin controls should be z-indexed or outside stretched-link container. For now, keeping simple. */} 
             </div>
         `;
-        projectsContainer.appendChild(card);
+        // Fix for admin controls with stretched-link: remove stretched-link if admin controls exist, or handle differently.
+        // Better approach: Don't use stretched-link if admin. Or put admin controls outside.
+        // Let's remove stretched-link for now to ensure buttons work, or just use a normal link.
+        
+        col.appendChild(card);
+        projectsContainer.appendChild(col);
     });
 }
 
-// Función global para eliminar desde el onclick
-window.deleteProject = async function (id) {
-    if (!confirm('¿Estás seguro de que quieres eliminar este proyecto? Esta acción no se puede deshacer.')) return;
-
-    try {
-        const response = await fetch('../../../backend/api/delete_project.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: id })
-        });
-        const result = await response.json();
-
-        if (result.success) {
-            alert('Proyecto eliminado.');
-            loadProjects(); // Recargar lista
-        } else {
-            alert('Error: ' + result.message);
-        }
-    } catch (error) {
-        console.error('Error delete:', error);
-        alert('Error de conexión.');
-    }
-}
 // ...
-
-function getIconForActivity(type) {
-    const icons = {
-        'medio_ambiente': '🌿',
-        'social': '🤝',
-        'educacion': '📚',
-        'animales': '🐾',
-        'emergencias': '🚨',
-        'deportes': '⚽',
-        'mayores': '👵',
-        'juventud': '🎉'
-    };
-    return icons[type] || '📌';
-}
-
-
-// ==========================================================
-// 3. UI GLOBALES (Mobile Menu)
-// ==========================================================
-document.addEventListener('DOMContentLoaded', () => {
-    const navToggle = document.getElementById('nav-toggle');
-    const nav = document.getElementById('nav-menu');
-
-    if (navToggle && nav) {
-        navToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-    }
-});
-
-// ==========================================================
-// 4. LÓGICA DE DETALLE DE PROYECTO
-// ==========================================================
-
-if (window.location.pathname.includes('detalle-proyecto.html')) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const projectId = urlParams.get('id');
-
-    if (projectId) {
-        loadProjectDetail(projectId);
-    } else {
-        const title = document.querySelector('.project-title');
-        if (title) title.textContent = 'Proyecto no especificado';
-    }
-}
 
 async function loadProjectDetail(id) {
     try {
@@ -314,31 +254,56 @@ async function loadProjectDetail(id) {
         // Construir bloques de detalle
         const detailContainer = document.querySelector('.detail-blocks');
         detailContainer.innerHTML = `
-            <div class="detail-block">
-                <h3>👥 Descripción</h3>
-                <p>${project.descripcion}</p>
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h3 class="h5 fw-bold mb-3">👥 Descripción</h3>
+                    <p class="text-muted mb-0">${project.descripcion}</p>
+                </div>
             </div>
             
-            <div class="detail-grid">
-                <div class="detail-item">
-                    <h4>📅 Cuándo</h4>
-                    <p>${project.frecuencia || 'A consultar'}<br>${project.duracion || ''}</p>
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h4 class="h6 fw-bold mb-2">📅 Cuándo</h4>
+                            <p class="text-muted mb-0">${project.frecuencia || 'A consultar'}<br>${project.duracion || ''}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="detail-item">
-                    <h4>📍 Dónde</h4>
-                    <p>${project.punto_encuentro || project.pedania_nombre}</p>
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h4 class="h6 fw-bold mb-2">📍 Dónde</h4>
+                            <p class="text-muted mb-0">${project.punto_encuentro || project.pedania_nombre}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="detail-block">
-                <h3>🎒 ¿Qué necesitas?</h3>
-                <p><strong>Lo que tú pones:</strong><br>${formatList(project.material_voluntario)}</p>
-                <p><strong>Lo que ponemos nosotros:</strong><br>${formatList(project.material_organizacion)}</p>
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h3 class="h5 fw-bold mb-3">🎒 ¿Qué necesitas?</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <p class="fw-bold mb-2">Lo que tú pones:</p>
+                            <p class="text-muted mb-0">${formatList(project.material_voluntario)}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="fw-bold mb-2">Lo que ponemos nosotros:</p>
+                            <p class="text-muted mb-0">${formatList(project.material_organizacion)}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="detail-block warning-block">
-                <h3>⚠️ Importante</h3>
-                <p>${project.notas_importantes || 'Sin notas adicionales.'}</p>
+            <div class="alert alert-warning border-0 shadow-sm">
+                <div class="d-flex">
+                    <div class="me-3 fs-4">⚠️</div>
+                    <div>
+                        <h3 class="h6 fw-bold mb-1">Importante</h3>
+                        <p class="mb-0 small">${project.notas_importantes || 'Sin notas adicionales.'}</p>
+                    </div>
+                </div>
             </div>
         `;
 

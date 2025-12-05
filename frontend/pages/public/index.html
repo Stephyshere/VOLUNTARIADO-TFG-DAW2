@@ -4,183 +4,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Encuentra oportunidades de voluntariado en Mazarrón. Únete a proyectos en tu pedanía y marca la diferencia.">
+    <meta name="description" content="Encuentra oportunidades de voluntariado en Mazarrón. Únete a proyectos en tu pedanía y marca la diferencia.">
     <title>Voluntariado Mazarrón - ¡Encuentra tu Causa!</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../assets/css/styles.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="../../assets/js/script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- Header (Unified Design) -->
-    <header id="header" class="header">
-        <div class="logo">VoluntaMazarrón</div>
-
-        <nav id="nav-menu" class="nav">
-            <a href="index.html">Inicio</a>
-            <a href="sobre-nosotros.html">Nuestra Misión</a>
-            <a href="index.html#projects-section">Proyectos</a>
-            <a href="contacto.html">Contacto</a>
-
-            <!-- Session Handling Elements (Will be toggled by JS) -->
-            <a href="../auth/login.html" id="login-link" class="cta-header">Iniciar Sesión</a>
-
-            <a href="../admin/admin.html" id="admin-link" class="cta-header "
-                style="display:none; background-color: var(--color-text-main);">Panel Admin</a>
-            <a href="../admin/crear-actividad.html" id="create-link" class="cta-header"
-                style="display:none; background-color: var(--color-secondary);">+ Crear</a>
-            <button id="logout-btn" class="cta-header"
-                style="display:none; background-color: var(--color-text-muted);">Cerrar Sesión</button>
-        </nav>
-
-        <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
+    <!-- Header -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid px-5">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <a class="navbar-brand logo" href="index.html">VoluntaMazarrón</a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center gap-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sobre-nosotros.html">Nuestra Misión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#projects-section">Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../auth/login.html" id="login-link" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item" style="display:none;" id="admin-panel-item">
+                             <a href="../admin/admin.html" id="admin-link" class="btn btn-dark rounded-pill px-4 fw-bold shadow-sm">Panel Admin</a>
+                        </li>
+                         <li class="nav-item" style="display:none;" id="create-item">
+                            <a href="../admin/crear-actividad.html" id="create-link" class="btn btn-success rounded-pill px-4 fw-bold shadow-sm">+ Crear</a>
+                        </li>
+                        <li class="nav-item">
+                            <button id="logout-btn" class="btn btn-outline-secondary rounded-pill px-4 fw-bold" style="display:none;">Cerrar Sesión</button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <main class="page-content">
-        <!-- Hero Section -->
+
         <section class="hero-lg animate-fade-up">
-            <h1>Transforma <span>Mazarrón</span><br>Voluntariado Cerca de Ti</h1>
-            <p>Busca oportunidades en tu pedanía o por la actividad que te apasione. Desde la costa hasta el interior,
-                cada acción cuenta.</p>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <h1 class="display-3 fw-bold mb-4">Transforma <span>Mazarrón</span><br>Voluntariado Cerca de Ti</h1>
+                        <p class="lead text-muted mb-5 mx-auto" style="max-width: 700px;">Busca oportunidades en tu pedanía o por la actividad que te apasione. Desde la costa hasta el interior, cada acción cuenta.</p>
 
-            <!-- Search Module -->
-            <div class="search-module" style="max-width: 900px; margin: 0 auto; justify-content: center;">
-                <div class="filter-group" style="flex: 1; min-width: 250px;">
-                    <label for="pedania-filter">¿Dónde quieres ayudar?</label>
-                    <select id="pedania-filter">
-                        <option value="all">Ver Todo el Municipio</option>
-                        <option value="mazarron">Mazarrón (Casco Urbano)</option>
-                        <option value="puerto">Puerto de Mazarrón</option>
-                        <option value="atalaya">Atalaya</option>
-                        <option value="balsicas">Balsicas</option>
-                        <option value="canadas">Cañadas del Romero</option>
-                        <option value="ganuelas">Gañuelas</option>
-                        <option value="garrobo">Garrobo</option>
-                        <option value="ifre-canada">Ifre - Cañada de Gallego</option>
-                        <option value="ifre-pastrana">Ifre - Pastrana</option>
-                        <option value="leiva">Leiva</option>
-                        <option value="majada">Majada</option>
-                        <option value="mingrano">Mingrano</option>
-                        <option value="moreras">Moreras</option>
-                        <option value="rincones">Rincones</option>
-                        <option value="saladillo">Saladillo (Camposol)</option>
-                    </select>
+                        <div class="search-module p-4 bg-white rounded-4 shadow-lg mx-auto" style="max-width: 900px;">
+                            <div class="row g-3 align-items-end">
+                                <div class="col-md-5">
+                                    <label for="pedania-filter" class="form-label fw-bold">¿Dónde quieres ayudar?</label>
+                                    <select id="pedania-filter" class="form-select form-select-lg border-secondary-subtle">
+                                        <option value="all">Ver Todo el Municipio</option>
+                                        <option value="mazarron">Mazarrón (Casco Urbano)</option>
+                                        <option value="puerto">Puerto de Mazarrón</option>
+                                        <option value="atalaya">Atalaya</option>
+                                        <option value="balsicas">Balsicas</option>
+                                        <option value="canadas">Cañadas del Romero</option>
+                                        <option value="ganuelas">Gañuelas</option>
+                                        <option value="garrobo">Garrobo</option>
+                                        <option value="ifre-canada">Ifre - Cañada de Gallego</option>
+                                        <option value="ifre-pastrana">Ifre - Pastrana</option>
+                                        <option value="leiva">Leiva</option>
+                                        <option value="majada">Majada</option>
+                                        <option value="mingrano">Mingrano</option>
+                                        <option value="moreras">Moreras</option>
+                                        <option value="rincones">Rincones</option>
+                                        <option value="saladillo">Saladillo (Camposol)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="actividad-filter" class="form-label fw-bold">¿Qué te motiva?</label>
+                                    <select id="actividad-filter" class="form-select form-select-lg border-secondary-subtle">
+                                        <option value="all">Todas las Actividades</option>
+                                        <option value="medio_ambiente">Medio Ambiente y Sostenibilidad</option>
+                                        <option value="social">Social y Acompañamiento</option>
+                                        <option value="educacion">Educación y Cultura</option>
+                                        <option value="animales">Protección Animal</option>
+                                        <option value="emergencias">Emergencias y Protección Civil</option>
+                                        <option value="deportes">Deportes y Eventos</option>
+                                        <option value="mayores">Apoyo a Mayores</option>
+                                        <option value="juventud">Juventud y Ocio</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <button id="search-button" class="btn btn-primary btn-lg w-100 fw-bold">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="filter-group" style="flex: 1; min-width: 250px;">
-                    <label for="actividad-filter"> ¿Qué te motiva?</label>
-                    <select id="actividad-filter">
-                        <option value="all">Todas las Actividades</option>
-                        <option value="medio_ambiente"> Medio Ambiente y Sostenibilidad</option>
-                        <option value="social"> Social y Acompañamiento</option>
-                        <option value="educacion">Educación y Cultura</option>
-                        <option value="animales">Protección Animal</option>
-                        <option value="emergencias">Emergencias y Protección Civil</option>
-                        <option value="deportes">Deportes y Eventos</option>
-                        <option value="mayores">Apoyo a Mayores</option>
-                        <option value="juventud">Juventud y Ocio</option>
-                    </select>
-                </div>
-
-                <button id="search-button" class="search-button">Buscar Proyectos</button>
             </div>
         </section>
 
-        <!-- About Preview -->
-        <section id="about-section" class="content-section" style="text-align: center;">
-            <div style="margin-bottom: 2rem;">
-                <h2 class="section-title">Nuestra Misión</h2>
-                <p style="font-size: 1.1em; max-width: 800px; margin: 0 auto; color: var(--color-text-muted);">
-                    Somos la plataforma que conecta la necesidad de la comunidad con la voluntad de cambio de nuestros
-                    vecinos.
-                </p>
-            </div>
+        <section id="about-section" class="content-section py-5 text-center">
+            <div class="container">
+                <div class="mb-5">
+                    <h2 class="section-title mb-3">Nuestra Misión</h2>
+                    <p class="lead text-muted mx-auto" style="max-width: 800px;">
+                        Somos la plataforma que conecta la necesidad de la comunidad con la voluntad de cambio de nuestros vecinos.
+                    </p>
+                </div>
 
-            <div class="impact-grid">
-                <div class="stat-card">
-                    <span class="stat-number">300+</span>
-                    <span class="stat-label">Voluntarios</span>
+                <div class="row g-4 justify-content-center mb-5">
+                    <div class="col-md-4 col-lg-3">
+                        <div class="stat-card h-100">
+                            <span class="stat-number">300+</span>
+                            <span class="stat-label">Voluntarios</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="stat-card h-100">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Pedanías</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="stat-card h-100">
+                            <span class="stat-number">5k+</span>
+                            <span class="stat-label">Horas</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number">12</span>
-                    <span class="stat-label">Pedanías</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">5k+</span>
-                    <span class="stat-label">Horas</span>
-                </div>
-            </div>
 
-            <a href="sobre-nosotros.html" class="details-button" style="margin-top: 1rem;">Conoce nuestra Historia
-                Completa</a>
+                <a href="sobre-nosotros.html" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold">Conoce nuestra Historia Completa</a>
+            </div>
         </section>
 
         <!-- Testimonials -->
-        <section id="testimonials-section" style="background: var(--color-bg); padding: 4rem 1rem;">
-            <div class="content-section">
-                <h2 class="section-title" style="text-align: center; display: block;">Historias que Inspiran</h2>
-                <div class="testimonial-carousel">
-                    <div class="testimonial-card">
-                        <p style="font-style: italic; color: #4b5563;">"Empecé limpiando el Garrobo y ahora no puedo
-                            parar. Es una satisfacción ver el cambio que hacemos directamente en nuestro municipio."</p>
-                        <div class="testimonial-author">— Ana P., Voluntaria de Medio Ambiente</div>
+        <section id="testimonials-section" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title text-center mb-5">Historias que Inspiran</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="testimonial-card h-100 d-flex flex-column justify-content-between">
+                            <p class="fst-italic text-secondary mb-4">"Empecé limpiando el Garrobo y ahora no puedo parar. Es una satisfacción ver el cambio que hacemos directamente en nuestro municipio."</p>
+                            <div class="testimonial-author">— Ana P., Voluntaria de Medio Ambiente</div>
+                        </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p style="font-style: italic; color: #4b5563;">"Dedicar dos horas a la semana a ayudar con los
-                            deberes de los niños de Camposol es la mejor inversión de tiempo. ¡Los veo progresar
-                            muchísimo!"</p>
-                        <div class="testimonial-author">— Javier R., Tutor Voluntario</div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="testimonial-card h-100 d-flex flex-column justify-content-between">
+                            <p class="fst-italic text-secondary mb-4">"Dedicar dos horas a la semana a ayudar con los deberes de los niños de Camposol es la mejor inversión de tiempo. ¡Los veo progresar muchísimo!"</p>
+                            <div class="testimonial-author">— Javier R., Tutor Voluntario</div>
+                        </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p style="font-style: italic; color: #4b5563;">"La organización es increíble. Siempre sabes
-                            dónde y cuándo se te necesita."</p>
-                        <div class="testimonial-author">— María L., Protección Animal</div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="testimonial-card h-100 d-flex flex-column justify-content-between">
+                            <p class="fst-italic text-secondary mb-4">"La organización es increíble. Siempre sabes dónde y cuándo se te necesita."</p>
+                            <div class="testimonial-author">— María L., Protección Animal</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Projects List Section -->
-        <section id="projects-section" class="content-section">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 class="section-title">Proyectos Disponibles</h2>
-                <p style="color: var(--color-text-muted);">Explora las oportunidades activas y únete hoy mismo.</p>
-            </div>
-
-            <div class="grid-container projects-grid" id="projects-container">
-                <!-- Javascript will populate this based on dummy data or fetch -->
-                <div
-                    style="grid-column: 1/-1; text-align: center; padding: 2rem; background: white; border-radius: var(--radius-lg);">
-                    <p>✨ Cargando proyectos más recientes...</p>
+        <section id="projects-section" class="content-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title mb-2">Proyectos Disponibles</h2>
+                    <p class="text-muted">Explora las oportunidades activas y únete hoy mismo.</p>
                 </div>
-            </div>
 
-            <p id="no-results"
-                style="text-align: center; display: none; padding: 2rem; background: #fee2e2; border-radius: var(--radius-md); color: #991b1b; margin-top: 2rem;">
-                No se encontraron proyectos que coincidan con tus filtros. ¡Prueba con otra pedanía o actividad!
-            </p>
+                <div class="row g-4" id="projects-container">
+                    <!-- Javascript will populate this -->
+                    <div class="col-12 text-center py-5 bg-white rounded-4 shadow-sm">
+                        <p class="mb-0 fs-5 text-muted">✨ Cargando proyectos más recientes...</p>
+                    </div>
+                </div>
 
-            <div class="cta-general" style="margin-top: 60px; text-align: center;">
-                <p style="margin-bottom: 1rem; font-size: 1.1em;">¿No encuentras lo que buscas?</p>
-                <a href="unete.html" class="submit-button"
-                    style="display: inline-block; width: auto; padding: 1rem 3rem;">¡Regístrate y te avisamos!</a>
+                <div id="no-results" class="alert alert-danger text-center mt-4" style="display: none;">
+                    No se encontraron proyectos que coincidan con tus filtros. ¡Prueba con otra pedanía o actividad!
+                </div>
+
+                <div class="text-center mt-5">
+                    <p class="mb-3 fs-5">¿No encuentras lo que buscas?</p>
+                    <a href="unete.html" class="btn btn-success btn-lg rounded-pill px-5 shadow-sm">¡Regístrate y te avisamos!</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
-        <div class="footer-links">
-            <a href="#">Política de Privacidad</a>
-            <a href="#">Aviso Legal</a>
+    <footer class="footer bg-dark text-white py-5 mt-auto">
+        <div class="container text-center">
+            <p class="mb-3">&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="text-secondary text-decoration-none hover-white">Política de Privacidad</a>
+                <a href="#" class="text-secondary text-decoration-none hover-white">Aviso Legal</a>
+            </div>
         </div>
     </footer>
 
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

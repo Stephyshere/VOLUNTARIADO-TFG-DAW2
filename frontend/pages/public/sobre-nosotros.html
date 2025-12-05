@@ -7,103 +7,143 @@
     <meta name="description"
         content="Conoce la misión y el equipo detrás de Voluntariado Mazarrón. Conectando ciudadanos para un impacto positivo.">
     <title>Sobre Nosotros - Voluntariado Mazarrón</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../assets/css/styles.css">
-
-    <!-- Scripts -->
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="../../assets/js/script.js" defer></script>
 </head>
 
 <body>
 
     <!-- Header -->
-    <header id="header" class="header">
-        <div class="logo">VoluntaMazarrón</div>
-        <nav id="nav-menu" class="nav">
-            <a href="index.html">Inicio</a>
-            <a href="index.html#projects-section">Proyectos</a>
-            <a href="sobre-nosotros.html">Sobre Nosotros</a>
-            <a href="contacto.html">Contacto</a>
-            <a href="unete.html" class="cta-header">¡Únete Ahora!</a>
-        </nav>
-        <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid px-5">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <a class="navbar-brand logo" href="index.html">VoluntaMazarrón</a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center gap-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#projects-section">Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="unete.html" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">¡Únete
+                                Ahora!</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
     <main class="page-content">
+        <!-- Hero Section -->
         <section class="hero-sm animate-fade-up">
-            <h1>Nuestra Misión en <span>Mazarrón</span></h1>
-            <p>Conectando corazones, manos y voluntades para transformar nuestra comunidad desde el Puerto hasta las
-                pedanías.</p>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="content-section">
-            <div class="impact-grid animate-fade-up" style="animation-delay: 0.2s;">
-                <div class="stat-card">
-                    <span class="stat-number">300+</span>
-                    <span class="stat-label">Voluntarios Activos</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">12</span>
-                    <span class="stat-label">Pedanías Cubiertas</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Proyectos Por Año</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">5k+</span>
-                    <span class="stat-label">Horas Donadas</span>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h1 class="display-4 fw-bold mb-4">Nuestra Misión en <span>Mazarrón</span></h1>
+                        <p class="lead text-muted">Conectando corazones, manos y voluntades para transformar nuestra
+                            comunidad desde el Puerto hasta las pedanías.</p>
+                    </div>
                 </div>
             </div>
         </section>
-        <div style="background: white; padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
-            <h2 class="section-title">Nuestra Historia</h2>
-            <p style="font-size: 1.1em; color: var(--color-text-muted); margin-bottom: 2rem;">
-                La iniciativa <strong>VoluntaMazarrón</strong> nació en 2020, un año que nos enseñó el valor de la
-                solidaridad. Lo que comenzó como un grupo de WhatsApp para repartir alimentos a vecinos vulnerables,
-                se ha convertido en una organización estructurada que colabora estrechamente con el Ayuntamiento y
-                entidades locales.
-            </p>
-            <p style="font-size: 1.1em; color: var(--color-text-muted);">
-                Hoy, somos más que voluntarios; somos una familia dedicada a ver florecer cada rincón de nuestro
-                municipio.
-            </p>
-        </div>
+
+        <!-- Stats Section -->
+        <section class="content-section py-5">
+            <div class="container">
+                <div class="row g-4 justify-content-center animate-fade-up" style="animation-delay: 0.2s;">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stat-card h-100">
+                            <span class="stat-number">300+</span>
+                            <span class="stat-label">Voluntarios Activos</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stat-card h-100">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Pedanías Cubiertas</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stat-card h-100">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Proyectos Por Año</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stat-card h-100">
+                            <span class="stat-number">5k+</span>
+                            <span class="stat-label">Horas Donadas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="content-section py-5">
+            <div class="container">
+                <div class="bg-white p-5 rounded-4 shadow-lg">
+                    <h2 class="section-title mb-4">Nuestra Historia</h2>
+                    <p class="lead text-muted mb-4">
+                        La iniciativa <strong>VoluntaMazarrón</strong> nació en 2020, un año que nos enseñó el valor de
+                        la solidaridad. Lo que comenzó como un grupo de WhatsApp para repartir alimentos a vecinos
+                        vulnerables, se ha convertido en una organización estructurada que colabora estrechamente con el
+                        Ayuntamiento y entidades locales.
+                    </p>
+                    <p class="lead text-muted mb-0">
+                        Hoy, somos más que voluntarios; somos una familia dedicada a ver florecer cada rincón de nuestro
+                        municipio.
+                    </p>
+                </div>
+            </div>
         </section>
 
         <!-- CTA Section -->
-        <section style="background: var(--color-primary); color: white; padding: 4rem 1rem; text-align: center;">
-            <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">¿Listo para marcar la diferencia?</h2>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">Tu tiempo puede cambiar vidas. Únete a
-                nosotros hoy mismo.</p>
-            <a href="unete.html"
-                style="background: white; color: var(--color-primary); padding: 1rem 2.5rem; border-radius: var(--radius-full); font-weight: 700; font-size: 1.1rem; display: inline-block; box-shadow: var(--shadow-lg); transition: transform 0.2s;">
-                Ser Voluntario
-            </a>
+        <section class="py-5 bg-primary text-white text-center">
+            <div class="container">
+                <h2 class="display-5 fw-bold mb-3">¿Listo para marcar la diferencia?</h2>
+                <p class="lead mb-4 opacity-75">Tu tiempo puede cambiar vidas. Únete a nosotros hoy mismo.</p>
+                <a href="unete.html" class="btn btn-light btn-lg rounded-pill px-5 fw-bold shadow-sm">Ser Voluntario</a>
+            </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div style="margin-bottom: 2rem;">
-            <span class="logo" style="font-size: 2rem;">VoluntaMazarrón</span>
+    <footer class="footer bg-dark text-white py-5 mt-auto">
+        <div class="container text-center">
+            <div class="mb-4">
+                <span class="logo fs-2">VoluntaMazarrón</span>
+            </div>
+            <div class="d-flex justify-content-center gap-3 mb-4">
+                <a href="#" class="text-secondary text-decoration-none hover-white">Política de Privacidad</a>
+                <a href="#" class="text-secondary text-decoration-none hover-white">Aviso Legal</a>
+                <a href="contacto.html" class="text-secondary text-decoration-none hover-white">Contacto</a>
+            </div>
+            <p class="text-secondary mb-0">&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
         </div>
-        <div class="footer-links">
-            <a href="#">Política de Privacidad</a>
-            <a href="#">Aviso Legal</a>
-            <a href="contacto.html">Contacto</a>
-        </div>
-        <p style="margin-top: 2rem; color: #64748b;">
-            &copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.
-        </p>
     </footer>
 
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

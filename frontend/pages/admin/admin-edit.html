@@ -4,110 +4,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Editar proyecto de voluntariado.">
     <title>Editar Proyecto - Mazarrón</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../assets/css/styles.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="../../assets/js/script.js" defer></script>
 </head>
 
-<body>
-    <header id="header" class="header">
-        <div class="logo">VoluntaMazarrón</div>
-        <nav id="nav-menu" class="nav">
-            <a href="../public/index.html">Inicio</a>
-        </nav>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid px-5">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <a class="navbar-brand logo" href="../public/index.html">VoluntaMazarrón</a>
+                <div class="ms-auto d-flex align-items-center gap-3">
+                    <a href="admin.html" class="nav-link fw-bold">Volver al Panel</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main class="page-content">
-        <section class="content-section form-section">
-            <h2>Editar Proyecto: <span id="edit-project-title-display">Cargando...</span></h2>
-            <p>Modifica los detalles, logística o el estado de la actividad.</p>
+    <main class="page-content flex-grow-1 py-5 mt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold">Editar Proyecto</h2>
+                        <p class="text-muted">Modificando: <span id="edit-project-title-display"
+                                class="fw-bold text-primary">Cargando...</span></p>
+                    </div>
 
-            <form id="edit-project-form" class="volunteer-form">
+                    <div class="card border-0 shadow-lg rounded-4">
+                        <div class="card-body p-5">
+                            <form id="edit-project-form">
 
-                <input type="hidden" id="edit-project-id" name="projectId">
+                                <input type="hidden" id="edit-project-id" name="projectId">
 
-                <h3>Datos Principales</h3>
-                <div class="form-group">
-                    <label for="edit-title">Título del Proyecto:</label>
-                    <input type="text" id="edit-title" required>
-                </div>
+                                <h4 class="mb-4 text-primary fw-bold"><i class="bi bi-info-circle me-2"></i>Datos
+                                    Principales</h4>
 
-                <div class="form-group">
-                    <label for="edit-pedania">Pedanía:</label>
-                    <select id="edit-pedania" required>
-                        <option value="atalaya">Atalaya</option>
-                        <option value="balsicas">Balsicas</option>
-                        <option value="canadas">Cañadas del Romero</option>
-                        <option value="ganuelas">Gañuelas</option>
-                        <option value="garrobo">Garrobo</option>
-                        <option value="ifre-gallego">Ifre-Cañada de Gallego</option>
-                        <option value="ifre-pastrana">Ifre-Pastrana</option>
-                        <option value="leiva">Leiva</option>
-                        <option value="majada">Majada</option>
-                        <option value="moreras">Moreras</option>
-                        <option value="puerto">Puerto de Mazarrón</option>
-                        <option value="saladillo">Saladillo</option>
-                        <option value="mazarron">Mazarrón (Núcleo Urbano)</option>
-                    </select>
-                </div>
+                                <div class="mb-3">
+                                    <label for="edit-title" class="form-label fw-bold">Título del Proyecto</label>
+                                    <input type="text" class="form-control" id="edit-title" required>
+                                </div>
 
-                <div class="form-group">
-                    <label for="edit-activity">Área de Actividad:</label>
-                    <select id="edit-activity" required>
-                        <option value="Medio Ambiente y Sostenibilidad">Medio Ambiente y Sostenibilidad</option>
-                        <option value="Social y Bienestar">Social y Bienestar</option>
-                        <option value="Educación y Cultura">Educación y Cultura</option>
-                        <option value="Sanidad y Salud">Sanidad y Salud</option>
-                        <option value="Deporte y Ocio">Deporte y Ocio</option>
-                    </select>
-                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="edit-pedania" class="form-label fw-bold">Pedanía</label>
+                                        <select class="form-select" id="edit-pedania" required>
+                                            <option value="atalaya">Atalaya</option>
+                                            <option value="balsicas">Balsicas</option>
+                                            <option value="canadas">Cañadas del Romero</option>
+                                            <option value="ganuelas">Gañuelas</option>
+                                            <option value="garrobo">Garrobo</option>
+                                            <option value="ifre-gallego">Ifre-Cañada de Gallego</option>
+                                            <option value="ifre-pastrana">Ifre-Pastrana</option>
+                                            <option value="leiva">Leiva</option>
+                                            <option value="majada">Majada</option>
+                                            <option value="moreras">Moreras</option>
+                                            <option value="puerto">Puerto de Mazarrón</option>
+                                            <option value="saladillo">Saladillo</option>
+                                            <option value="mazarron">Mazarrón (Núcleo Urbano)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit-activity" class="form-label fw-bold">Área de Actividad</label>
+                                        <select class="form-select" id="edit-activity" required>
+                                            <option value="Medio Ambiente y Sostenibilidad">Medio Ambiente y
+                                                Sostenibilidad</option>
+                                            <option value="Social y Bienestar">Social y Bienestar</option>
+                                            <option value="Educación y Cultura">Educación y Cultura</option>
+                                            <option value="Sanidad y Salud">Sanidad y Salud</option>
+                                            <option value="Deporte y Ocio">Deporte y Ocio</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                <div class="form-group">
-                    <label for="edit-description">Descripción:</label>
-                    <textarea id="edit-description" rows="4" required></textarea>
-                </div>
+                                <div class="mb-4">
+                                    <label for="edit-description" class="form-label fw-bold">Descripción</label>
+                                    <textarea class="form-control" id="edit-description" rows="4" required></textarea>
+                                </div>
 
-                <h3>Logística</h3>
-                <div class="form-group">
-                    <label for="edit-duration">Duración:</label>
-                    <input type="text" id="edit-duration">
-                </div>
-                <div class="form-group">
-                    <label for="edit-frequency">Frecuencia:</label>
-                    <input type="text" id="edit-frequency">
-                </div>
-                <div class="form-group">
-                    <label for="edit-meeting">Punto de Encuentro:</label>
-                    <input type="text" id="edit-meeting">
-                </div>
-                <div class="form-group">
-                    <label for="edit-transport">Transporte:</label>
-                    <input type="text" id="edit-transport">
-                </div>
+                                <hr class="my-4">
 
-                <h3>Materiales & Notas</h3>
-                <div class="form-group">
-                    <label for="edit-vol-material">Material Voluntario (Separar por nueva línea):</label>
-                    <textarea id="edit-vol-material" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="edit-org-material">Material Organización (Separar por nueva línea):</label>
-                    <textarea id="edit-org-material" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="edit-notes">Notas Importantes:</label>
-                    <textarea id="edit-notes" rows="3"></textarea>
-                </div>
+                                <h4 class="mb-4 text-primary fw-bold"><i class="bi bi-clock me-2"></i>Logística</h4>
 
-                <button type="submit" class="submit-button">Actualizar Proyecto</button>
-                <a href="admin.html" class="submit-button"
-                    style="background-color:gray; display:block; text-align:center;">Cancelar</a>
-            </form>
-        </section>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="edit-duration" class="form-label fw-bold">Duración</label>
+                                        <input type="text" class="form-control" id="edit-duration">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit-frequency" class="form-label fw-bold">Frecuencia</label>
+                                        <input type="text" class="form-control" id="edit-frequency">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label for="edit-meeting" class="form-label fw-bold">Punto de Encuentro</label>
+                                        <input type="text" class="form-control" id="edit-meeting">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit-transport" class="form-label fw-bold">Transporte</label>
+                                        <input type="text" class="form-control" id="edit-transport">
+                                    </div>
+                                </div>
+
+                                <hr class="my-4">
+
+                                <h4 class="mb-4 text-primary fw-bold"><i class="bi bi-box-seam me-2"></i>Materiales &
+                                    Notas</h4>
+
+                                <div class="mb-3">
+                                    <label for="edit-vol-material" class="form-label fw-bold">Material
+                                        Voluntario</label>
+                                    <textarea class="form-control" id="edit-vol-material" rows="3"></textarea>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="edit-org-material" class="form-label fw-bold">Material
+                                        Organización</label>
+                                    <textarea class="form-control" id="edit-org-material" rows="3"></textarea>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label for="edit-notes" class="form-label fw-bold">Notas Importantes</label>
+                                    <textarea class="form-control" id="edit-notes" rows="3"></textarea>
+                                </div>
+
+                                <div class="d-grid gap-2">
+                                    <button type="submit"
+                                        class="btn btn-primary btn-lg rounded-pill fw-bold shadow-sm">Actualizar
+                                        Proyecto</button>
+                                    <a href="admin.html"
+                                        class="btn btn-outline-secondary rounded-pill fw-bold">Cancelar</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 text-secondary small">&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
+        </div>
     </footer>
-    <script src="../../assets/js/script.js"></script>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

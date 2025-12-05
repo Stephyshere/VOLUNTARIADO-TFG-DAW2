@@ -4,98 +4,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Únete al equipo de voluntarios de Mazarrón. Regístrate y ayuda a tu comunidad.">
     <title>¡Únete al Voluntariado! - Mazarrón</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../assets/css/styles.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="../../assets/js/script.js" defer></script>
 </head>
 
 <body>
-    <header id="header" class="header">
-        <div class="logo">VoluntaMazarrón</div>
-        <nav id="nav-menu" class="nav">
-            <a href="index.html">Inicio</a>
-            <a href="index.html#projects-section">Proyectos</a>
-            <a href="sobre-nosotros.html">Sobre Nosotros</a>
-            <a href="contacto.html">Contacto</a>
-        </nav>
-        <a href="unete.html" class="cta-header">¡Únete Ahora!</a>
-        <button id="nav-toggle" class="nav-toggle">
-            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
+
+    <!-- Header -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid px-5">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <a class="navbar-brand logo" href="index.html">VoluntaMazarrón</a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center gap-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#projects-section">Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="unete.html" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">¡Únete
+                                Ahora!</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <main class="page-content">
-        <section class="content-section form-section">
-            <h2>Formulario de Inscripción de Voluntarios</h2>
-            <p>Completa el formulario y da el primer paso para ser parte del cambio en Mazarrón.</p>
-
-            <form action="#" method="POST" class="volunteer-form">
-
-                <div class="form-group">
-                    <label for="nombre">Nombre Completo:</label>
-                    <input type="text" id="nombre" name="nombre" required>
+        <section class="content-section py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center mb-5">
+                        <h2 class="display-5 fw-bold mb-3">Formulario de Inscripción</h2>
+                        <p class="lead text-muted">Completa el formulario y da el primer paso para ser parte del cambio
+                            en Mazarrón.</p>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="bg-white p-5 rounded-4 shadow-lg">
+                            <form action="#" method="POST" class="volunteer-form">
+
+                                <div class="mb-4">
+                                    <label for="nombre" class="form-label fw-bold">Nombre Completo:</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control form-control-lg"
+                                        required>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label fw-bold">Correo Electrónico:</label>
+                                        <input type="email" id="email" name="email" class="form-control form-control-lg"
+                                            required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telefono" class="form-label fw-bold">Teléfono:</label>
+                                        <input type="tel" id="telefono" name="telefono"
+                                            class="form-control form-control-lg">
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="residencia" class="form-label fw-bold">Pedanía de Residencia:</label>
+                                    <select id="residencia" name="residencia" class="form-select form-select-lg"
+                                        required>
+                                        <option value="">-- Selecciona tu Pedanía --</option>
+                                        <option value="atalaya">Atalaya</option>
+                                        <option value="balsicas">Balsicas</option>
+                                        <option value="canadas">Cañadas del Romero</option>
+                                        <option value="ganuelas">Gañuelas</option>
+                                        <option value="garrobo">Garrobo</option>
+                                        <option value="ifre-gallego">Ifre-Cañada de Gallego</option>
+                                        <option value="ifre-pastrana">Ifre-Pastrana</option>
+                                        <option value="leiva">Leiva</option>
+                                        <option value="majada">Majada</option>
+                                        <option value="moreras">Moreras (Incl. Bolnuevo)</option>
+                                        <option value="puerto">Puerto de Mazarrón</option>
+                                        <option value="saladillo">Saladillo (Incl. Camposol)</option>
+                                        <option value="mazarron">Mazarrón (Núcleo Urbano)</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="interes" class="form-label fw-bold">Área de Interés (Principal):</label>
+                                    <select id="interes" name="interes" class="form-select form-select-lg" required>
+                                        <option value="">-- Selecciona una Causa --</option>
+                                        <option value="ambiente">Medio Ambiente y Sostenibilidad</option>
+                                        <option value="social">Social y Bienestar</option>
+                                        <option value="educacion">Educación y Cultura</option>
+                                        <option value="sanidad">Sanidad y Salud</option>
+                                        <option value="deporte">Deporte y Ocio</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-check mb-5">
+                                    <input type="checkbox" id="politica" name="politica" class="form-check-input"
+                                        required>
+                                    <label for="politica" class="form-check-label text-muted">Acepto la <a href="#"
+                                            class="text-primary">Política de Privacidad</a> y el tratamiento de mis
+                                        datos.</label>
+                                </div>
+
+                                <button type="submit"
+                                    class="btn btn-success btn-lg w-100 fw-bold rounded-pill shadow-sm">Enviar
+                                    Solicitud</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono">
-                </div>
-
-                <div class="form-group">
-                    <label for="residencia">Pedanía de Residencia:</label>
-                    <select id="residencia" name="residencia" required>
-                        <option value="">-- Selecciona tu Pedanía --</option>
-                        <option value="atalaya">Atalaya</option>
-                        <option value="balsicas">Balsicas</option>
-                        <option value="canadas">Cañadas del Romero</option>
-                        <option value="ganuelas">Gañuelas</option>
-                        <option value="garrobo">Garrobo</option>
-                        <option value="ifre-gallego">Ifre-Cañada de Gallego</option>
-                        <option value="ifre-pastrana">Ifre-Pastrana</option>
-                        <option value="leiva">Leiva</option>
-                        <option value="majada">Majada</option>
-                        <option value="moreras">Moreras (Incl. Bolnuevo)</option>
-                        <option value="puerto">Puerto de Mazarrón</option>
-                        <option value="saladillo">Saladillo (Incl. Camposol)</option>
-                        <option value="mazarron">Mazarrón (Núcleo Urbano)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="interes">Área de Interés (Principal):</label>
-                    <select id="interes" name="interes" required>
-                        <option value="">-- Selecciona una Causa --</option>
-                        <option value="ambiente">Medio Ambiente y Sostenibilidad</option>
-                        <option value="social">Social y Bienestar</option>
-                        <option value="educacion">Educación y Cultura</option>
-                        <option value="sanidad">Sanidad y Salud</option>
-                        <option value="deporte">Deporte y Ocio</option>
-                    </select>
-                </div>
-
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="politica" name="politica" required>
-                    <label for="politica">Acepto la Política de Privacidad y el tratamiento de mis datos.</label>
-                </div>
-
-                <button type="submit" class="submit-button">Enviar Solicitud</button>
-            </form>
-
+            </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
-        <div class="footer-links">
-            <a href="#">Política de Privacidad</a>
-            <a href="#">Aviso Legal</a>
+    <footer class="footer bg-dark text-white py-5 mt-auto">
+        <div class="container text-center">
+            <div class="mb-4">
+                <span class="logo fs-2">VoluntaMazarrón</span>
+            </div>
+            <div class="d-flex justify-content-center gap-3 mb-4">
+                <a href="#" class="text-secondary text-decoration-none hover-white">Política de Privacidad</a>
+                <a href="#" class="text-secondary text-decoration-none hover-white">Aviso Legal</a>
+            </div>
+            <p class="text-secondary mb-0">&copy; 2025 Voluntariado Mazarrón. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src="../../assets/js/script.js"></script>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
