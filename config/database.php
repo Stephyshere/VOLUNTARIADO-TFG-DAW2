@@ -1,17 +1,25 @@
 <?php
 // config/database.php
 
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_NAME', 'voluntariado_db');
+class Database {
+    private $host = "localhost";
+    private $db_name = "voluntariado_db";
+    private $username = "root";
+    private $password = "root";
+    public $conn;
 
-try {
-    $conn = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME . ";charset=utf8", DB_USERNAME, DB_PASSWORD);
-    // Set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch(PDOException $e) {
-    die(json_encode(["success" => false, "message" => "Error de conexión: " . $e->getMessage()]));
+    public function getConnection() {
+        $this->conn = null;
+
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        } catch(PDOException $exception) {
+            echo "Error de conexión: " . $exception->getMessage();
+        }
+
+        return $this->conn;
+    }
 }
 ?>
